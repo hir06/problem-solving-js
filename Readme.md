@@ -1,4 +1,3 @@
-markdown
 # Problem Solving Repository
 
 Welcome to our problem-solving repository! This repository is dedicated to exploring various data structures and algorithms using vanilla JavaScript. It's a great resource for anyone looking to improve their problem-solving skills, learn new algorithms, or understand data structures better.
