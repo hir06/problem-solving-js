@@ -1,0 +1,34 @@
+There are several types of queues and mechanisms that browsers use to manage the execution of events and code:
+1. Macro Task Queue (also known as Task Queue):
+   - This is the main queue where tasks like parsing HTML, executing scripts, and event callbacks (like click, load, etc.) are queued.
+   - Example: When a user clicks a button, the click event is placed in the macro task queue to be processed when the call stack is clear.
+2. Micro Task Queue:
+   - This queue is used for handling microtasks, which are usually smaller tasks that need to be executed without interruption after the current task completes and before the next macro task starts.
+   - Promises and MutationObserver callbacks are examples of microtasks.
+   - Example: When a Promise is resolved, its .then() or .catch() callbacks are queued in the micro task queue.
+3. Animation Frames:
+   - Browsers have a separate queue for managing animation frames, which is used for tasks that need to be executed in sync with the browser's repaint cycle, such as animations done with requestAnimationFrame.
+   - Example: An animation that moves an element across the screen will have its callback placed in the animation frames queue to ensure smooth rendering.
+4. Idle Task Queue:
+   - Some browsers implement an idle task queue for tasks that can be deferred until the browser is idle, using requestIdleCallback.
+   - Example: Background indexing or analytics processing might be placed in the idle task queue.
+The importance of each queue is to ensure that the browser remains responsive and that tasks are executed in an appropriate order. The separation into macro and micro tasks, for instance, allows the browser to handle high-priority and low-priority tasks efficiently. Micro tasks are processed at a higher priority than macro tasks because they are often used for actions that should be almost immediate, such as updating the UI state in response to a resolved Promise.
+Animations are given their own queue to align with the browser's refresh rate, ensuring smooth visual updates. Idle tasks are lower priority and are only run when the browser has free time, which helps to prevent them from impacting the performance of more critical tasks.
+Understanding these queues is important for web developers to write efficient, non-blocking code and to understand why certain tasks may be delayed or executed in a specific order.
+
+
+examplesjavascript
+console.log('Script start'); // Synchronous code
+
+setTimeout(function() {
+  console.log('setTimeout'); // Macro task
+}, 0);
+
+Promise.resolve().then(function() {
+  console.log('Promise1'); // Micro task
+}).then(function() {
+  console.log('Promise2'); // Micro task
+});
+
+console.log('Script end'); // Synchronous code
+

@@ -29,8 +29,4 @@ We welcome contributions! If you have a solution to a problem that isn't already
 
 This project is open source, under the [MIT License](LICENSE).
 
-## Contact
-
-If you have any questions or suggestions, feel free to open an issue or make a pull request.
-
 Happy coding!
