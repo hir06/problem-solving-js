@@ -1,5 +1,4 @@
 async function retryApiCall(apiFunction, maxRetries, retryInterval) {
-  
     let attempts = 0;
     while(attempts < maxRetries) {
       try {

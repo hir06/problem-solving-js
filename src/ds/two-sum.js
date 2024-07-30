@@ -1,6 +1,5 @@
 
 var twoSum = function(nums, target) {
-    const result = []
     const map = new Map()
     for (let i =0; i< nums.length; i++) {
         if (map.has(nums[i])) return [i, map.get(nums[i])]
@@ -21,3 +20,7 @@ Map(2) { 3 => 0, 4 => 1 }
 Output
 [2,1]
 */
+
+
+a+b = target
+a = target - b
